@@ -6,7 +6,10 @@ class TestClass {
     this.bar = bar;
   }
 
-  getFoo {
-    
+  getFoo() {
+    return this.foo;
   }
 }
+
+const varTestClass = new TestClass('foo param', 'bar param');
+console.log(varTestClass.getFoo);
