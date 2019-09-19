@@ -9,7 +9,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #333; }
+  color: #890b00; }
 
 .container {
   max-width: 960px;
@@ -18,13 +18,13 @@ a {
 
 header#main-header {
   padding: 1em;
-  background: #008080;
+  background: red;
   color: #fff; }
   header#main-header h1 {
     font-size: 40px; }
 
 nav#main-nav {
-  background: #009a9a;
+  background: black;
   height: 40px; }
   nav#main-nav ul {
     list-style: none;
@@ -43,4 +43,20 @@ nav#main-nav {
     margin-bottom: 30px; }
 
 #section-a {
-  background: #f4f4f4; }
+  background: #555;
+  color: #fff; }
+
+#section-b {
+  background: #890b00;
+  color: #fff; }
+
+.button, .button-a, .button-b {
+  padding: 10px 15px; }
+
+.button-a {
+  background: #cc0000;
+  color: #fff; }
+
+.button-b {
+  background: #1a1a1a;
+  color: #fff; }
