@@ -50,3 +50,13 @@ function palidrome(string) {
   }
 }
 palidrome('carac');
+
+//How do you create a private variable in JS? -- Using Scope
+
+function secretVar() {
+  var private = 'super secret code';
+  return function() {
+    return private;
+  };
+}
+console.log(secretVar);
