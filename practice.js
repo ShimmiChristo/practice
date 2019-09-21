@@ -56,7 +56,7 @@ palidrome('carac');
 // Explain how 'this' works in JavaScript.
 // Can you give an example of one of the ways that working with this has changed in ES6?
 
-// The overarching rule is that this is determined at the time a function is invoked by inspecting where it’s called, its call site. It follows these rules, in order of precedence.
+// The overarching rule is that 'this' is determined at the time a function is invoked by inspecting where it’s called, its call site. It follows these rules, in order of precedence.
 // 1. If the new keyword is used when calling the function, this inside the function is a brand new object.
 function ConstructorExample() {
   console.log(this);
@@ -87,6 +87,7 @@ var obj = {
   }
 };
 obj.printThis(); // -> { value: 5, printThis: ƒ }
+
 // 4. If a function is invoked as a free function invocation, meaning it was invoked without any of the conditions present above, this is the global object. In a browser, it’s window.
 function fn() {
   console.log(this);
