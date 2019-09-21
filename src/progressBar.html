@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Progress Bar</title>
+  </head>
+  <body>
+    <div class="bar-container">
+      <div class="bar"></div>
+    </div>
+    <button onclick="fillBar(2)">Start</button>
+
+    <style>
+      body {
+        background-color: lightgray;
+      }
+      .bar-container {
+        width: 200px;
+        height: 30px;
+        /* margin: '40px'; */
+        background-color: gray;
+      }
+      .bar {
+        background-color: green;
+        height: 100%;
+        width: 0;
+      }
+    </style>
+    <script>
+      function fillBar(seconds) {
+        const progress = document.querySelector('.bar');
+        // let width = 0;
+        // const interval = setInterval(() => {
+        //   console.log(width);
+        //   progress.style.width = width + '%';
+        //   width++;
+        //   if (width >= 100) {
+        //     clearInterval(interval);
+        //   }
+        // }, (seconds * 1000) / 100);
+        progress.style.width = '100%';
+        progress.style.transition = `${seconds}s linear width`;
+      }
+    </script>
+  </body>
+</html>
