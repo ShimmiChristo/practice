@@ -173,3 +173,32 @@ function fibRec(n) {
 fib(1);
 fib(2);
 fib(7);
+
+// What is React and why should we use it?
+
+// CSS - Floats, Border Box
+
+// JS - Promises, Async and Await, Observables, Scoping, [var, let, and const], closure, protypal inheritance vs es6 classes, hoisting,
+// Let and Const have block scoping. The const properties inside const can be changed, however you cannot change the value.
+
+// White boarding questions
+// String manipulation, palindromes, Fibonacci, fizzbuzz
+
+// FizzBuzz
+// Write a short program that prints each number from 1 to 100 on a new line. For each multiple of 3, print "Fizz" instead of the number. For each multiple of 5, print "Buzz" instead of the number. For numbers which are multiples of both 3 and 5, print "FizzBuzz" instead of the number.
+function fizzbuzz() {
+  for (i = 1; i <= 100; i++) {
+    if (i % 15 === 0) {
+      console.log('FizzBuzz');
+    } else if (i % 3 === 0) {
+      console.log('Fizz');
+    } else if (i % 5 === 0) {
+      console.log('Buzz');
+    } else {
+      console.log(i);
+    }
+  }
+}
+fizzbuzz();
+
+// API - REST vs Restful
