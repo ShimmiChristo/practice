@@ -144,3 +144,32 @@ var stoleSecretIdentity = hero.getSecretIdentity.bind(hero);
 
 console.log(stoleSecretIdentity()); // undefined
 console.log(hero.getSecretIdentity()); // John Doe
+
+// What is the value of i each time it is logged?
+for (var i = 0; i < 10; i++) {
+  window.setTimeout(function() {
+    console.log(i);
+  }, i * 100);
+}
+// 10 ten times
+
+// Write a funciton that calculates the nth term in the fibonacci sequence, where this sequence is defined as a series of number (0 1 1 2 3 5 8 13 ...), and where the sum of any term is the result of adding the previous two terms. Note: make sure that your solution can calculate larger thems (n > 30)!
+
+function fib(n) {
+  let arr = [0, 1];
+  for (i = 2; i < n + 1; i++) {
+    arr.push(arr[i - 2] + arr[i - 1]);
+  }
+  console.log(arr);
+}
+//recursive
+function fibRec(n) {
+  if (n < 2) {
+    return n;
+  }
+  return fibRec(n - 1) + fibRec(n - 2);
+}
+
+fib(1);
+fib(2);
+fib(7);
