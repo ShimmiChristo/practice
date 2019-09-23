@@ -1,3 +1,60 @@
+// Arrays - unshift(), push(), splice() or shift(), pop(), concat(), map(), forEach(), var, let, const
+let arr = ['one', 'two', 'three', 'four'];
+let arr2 = ['5', '6', '7'];
+// let - is a signal that the variable may be reassigned
+// const - is a signal that the variable wont be reassigned
+//unshift() - adds one or more elements to the beginning and returns the new length of the array
+arr.unshift('zero');
+['zero', ...arr];
+// push() - adds one or more elements to the end of an array and returns the new length of the array
+arr.push('five');
+[...arr, 'five'];
+// splice() - changes the contents of an array by removing or replacing existing elements and/or adding new elements in place
+// shift() -removes the FIRST element from an array and return that removed element.
+arr.splice(0, 1);
+arr.shift();
+// pop() - removes the last element and returns that element
+arr.pop();
+// concat()
+arr.concat(arr2);
+arr = [...arr, ...arr2];
+
+console.log(arr);
+
+//Objects
+// 3 ways to initialize Objects - new Object(), Object.create(), const init = {} (literal notation)
+var a = 'foo';
+var b = 42;
+var c = {};
+var object2 = { a: a, b: b, c: c };
+console.log(object2.b);
+console.log(object2.c);
+
+// Object.values()
+console.log(Object.values(object2));
+
+// Object.keys()
+console.log(Object.keys(object2));
+
+// Constructor Function (new Object())
+function Car(make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+}
+const myCar = new Car('Chevy', 'Colorado', 2017);
+console.log(myCar);
+// object.create method
+var Animal = {
+  type: 'Mammal',
+  displayType: function() {
+    console.log(this.type);
+  }
+};
+var animal1 = Object.create(Animal);
+console.log(animal1.displayType());
+var fish = Object.create(Animal);
+fish.displayType();
 // Classes vs Prototypal Inheritance
 
 class TestClass {
@@ -14,7 +71,7 @@ class TestClass {
 const varTestClass = new TestClass('foo param', 'bar param');
 // console.log(varTestClass.getFoo);
 
-// Write a funciton that takes a string as a parameter and returns the frequency of each letter of the alphabet that is found in that string
+// Write a function that takes a string as a parameter and returns the frequency of each letter of the alphabet that is found in that string
 // display the largest
 // ASK QUESTIONS
 // 1. Is case important?
