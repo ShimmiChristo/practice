@@ -277,4 +277,50 @@ function fizzbuzz() {
 }
 fizzbuzz();
 
+// Make this work
+// duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
+
+function duplicate(arr) {
+  // console.log(...arr, ...arr);
+  const newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    newArr.push(arr[i]);
+  }
+  console.log(newArr);
+  // console.log(newArr.concat(arr));
+}
+duplicate([1, 2, 3, 4, 5]);
+
 // API - REST vs Restful
+// REST - Representational State Transfer - an architectural style of development
+// RESTful - is used to refer to to web services implementing such an architecture (so an adjective)
+
+/* JS Questions
+object-oriented vs. functional programming
+1.  Functional Programming - Functional programming (often abbreviated FP) is the process of building software by composing pure functions, avoiding shared state, mutable data, and side-effects. Functional programming is declarative rather than imperative, and application state flows through pure functions.
+ - Why functional programming? 
+Its pure function, provides confidence of not changing things outside of its scope.
+ */
+let meetups = [
+  { name: 'JS', isActive: true, members: 450 },
+  { name: 'Angular', isActive: true, members: 900 },
+  { name: 'Node', isActive: false, members: 900 }
+];
+// Imperative -- Focuses on describing how program operates
+let activeMeetups = [];
+for (let i = 0; i < meetups.length; i++) {
+  let m = meetups[i];
+  if (m.isActive) {
+    activeMeetups.push(m);
+  }
+}
+console.log(activeMeetups);
+// Output will be array of 2 elements where isActive is true
+
+// Declarative -- Focuses on what the program should accomplish (Functional Programming)
+let activeMeetupsFP = [];
+activeMeetupsFP = meetups.filter(m => {
+  return m.isActive;
+});
+console.log(activeMeetupsFP);
+// Output will be array of 2 elements where isActive is true
