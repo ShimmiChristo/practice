@@ -237,6 +237,25 @@ fib(7);
 
 // JS - Promises, Async and Await, Observables, Scoping, [var, let, and const], closure, protypal inheritance vs es6 classes, hoisting,
 // Let and Const have block scoping. The const properties inside const can be changed, however you cannot change the value.
+// lexical scoping
+function outer() {
+  var name = 'chris';
+  function displayName() {
+    console.log(name);
+  }
+  return displayName();
+}
+outer();
+//closures
+function closureOutside() {
+  var name = 'chris';
+  function displayName() {
+    console.log(name);
+  }
+  return displayName;
+}
+var outerFunc = closureOutside();
+outerFunc();
 
 // White boarding questions
 // String manipulation, palindromes, Fibonacci, fizzbuzz
