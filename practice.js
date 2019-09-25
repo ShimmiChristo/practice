@@ -307,6 +307,7 @@ let meetups = [
   { name: 'Node', isActive: false, members: 900 }
 ];
 // Imperative -- Focuses on describing how program operates
+// Imperative programs spend lines of code describing the specific steps used to achieve the desired results — the flow control: How to do things.
 let activeMeetups = [];
 for (let i = 0; i < meetups.length; i++) {
   let m = meetups[i];
@@ -318,9 +319,39 @@ console.log(activeMeetups);
 // Output will be array of 2 elements where isActive is true
 
 // Declarative -- Focuses on what the program should accomplish (Functional Programming)
+// Declarative programs abstract the flow control process, and instead spend lines of code describing the data flow: What to do. The how gets abstracted away.
 let activeMeetupsFP = [];
 activeMeetupsFP = meetups.filter(m => {
   return m.isActive;
 });
 console.log(activeMeetupsFP);
 // Output will be array of 2 elements where isActive is true
+
+// .map(), .filter(), .reduce()
+const items = [
+  { name: 'ball', points: 2 },
+  { name: 'coin', points: 3 },
+  { name: 'candy', points: 4 }
+];
+// Use map to transform the following array of values into an array of item names:
+const mapResult = items.map(i => {
+  return i.name;
+});
+console.log(mapResult);
+
+// Use filter to select the items where points are greater than or equal to 3:
+const filterResult = items.filter(i => {
+  return i.points >= 3;
+});
+console.log(filterResult);
+
+// Use reduce to sum the points:
+const items = [
+  { name: 'ball', points: 2 },
+  { name: 'coin', points: 3 },
+  { name: 'candy', points: 4 }
+];
+const reduceResult = items.reduce((i, value) => {
+  return i.points + value.points;
+});
+console.log(reduceResult);
