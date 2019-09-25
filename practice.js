@@ -320,8 +320,47 @@ bookProto1.author = 'John Doe';
 bookProto1.year = '2011';
 
 // ES6 Classes
+class Book {
+  constructor(title, author, year) {
+    this.title = title;
+    this.author = author;
+    this.year = year;
+  }
+  getSummary() {
+    return `${this.title} was written by ${this.author} in ${this.year}`;
+  }
+  getAge() {
+    const years = new Date().getFullYear() - this.year;
+    return `${this.title} is ${years} years old.`;
+  }
+  revise(newYear) {
+    this.year = newYear;
+    this.revised = true;
+  }
+
+  // static method - we don't have to instantiate the object
+  static topBookStore() {
+    return 'Barnes & Noble';
+  }
+}
+// Instantiate an object
+const book3 = new Book('Book 3', 'john doe', '2000');
+console.log(book3);
+book3.revise('1900');
+console.log(book3);
+Book.topBookStore();
 
 // Subclasses
+class Magazine extends Book {
+  constructor(title, author, year, month) {
+    // super - in order to call parent constructor
+    super(title, author, year);
+    this.month = month;
+  }
+}
+// instantiate Magazine
+const mag3 = new Magazine('mag 3', 'john', '1999', 'Feb');
+console.log(mag3.getSummary());
 
 // Callbacks, Promises, Async/Await
 function add(x, y) {
