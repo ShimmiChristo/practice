@@ -236,6 +236,38 @@ fib(7);
 // CSS - Floats, Border Box
 
 // JS - Promises, Async and Await, Observables, Scoping, [var, let, and const], closure, protypal inheritance vs es6 classes, hoisting,
+
+// Callbacks, Promises, Async/Await
+function add(x, y) {
+  return x + y;
+}
+function addFive(x, addReference) {
+  console.log(x);
+  console.log(addReference(5, 3));
+  return addReference(5, x);
+}
+addFive(10, add);
+// Higher Order Function - when a function that receives another function as its argument
+function higherOrderFunction(x, callback) {
+  return callback(5, x);
+}
+higherOrderFunction(10, add);
+
+// Promises
+function onSuccess() {
+  console.log('sucess!');
+}
+function onError() {
+  console.log('error');
+}
+var promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject();
+  }, 2000);
+});
+promise.then(onSuccess);
+promise.catch(onError);
+
 // Let and Const have block scoping. The const properties inside const can be changed, however you cannot change the value.
 // lexical scoping
 function outer() {
