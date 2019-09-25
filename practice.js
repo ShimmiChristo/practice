@@ -236,6 +236,92 @@ fib(7);
 // CSS - Floats, Border Box
 
 // JS - Promises, Async and Await, Observables, Scoping, [var, let, and const], closure, protypal inheritance vs es6 classes, hoisting,
+// OOP vs Functional Programming vs Prototype-Based Programming
+
+// OOP Object Oriented Programming
+const s1 = 'Hello';
+console.log(typeof s1);
+const s2 = new String('Hello');
+console.log(typeof s2);
+
+// Object Literal
+const book1 = {
+  title: 'Book One',
+  author: 'John Doe',
+  year: '2013',
+  getSummary: function() {
+    return `${this.title} was written by ${this.author} in ${this.year}`;
+  }
+};
+console.log(book1.getSummary());
+
+// Object Constructor
+function Book(title, author, year) {
+  this.title = title;
+  this.author = author;
+  this.year = year;
+}
+const book1C = new Book('Book One', 'John doe', '2011');
+console.log(book1C.title);
+
+// Prototypes - used if we do not want to store getSummary for each object
+Book.prototype.getSummary = function() {
+  return `${this.title} was written by ${this.author} in ${this.year}`;
+};
+console.log(book1C.getSummary());
+
+Book.prototype.getAge = function() {
+  const years = new Date().getFullYear() - this.year;
+  return `${this.title} is ${years} years old.`;
+};
+console.log(book1C.getAge());
+
+Book.prototype.revise = function(newYear) {
+  this.year = newYear;
+  this.revise = true;
+};
+console.log(book1C);
+book1C.revise('2018');
+console.log(book1C);
+
+// Inheritence
+function Book(title, author, year) {
+  this.title = title;
+  this.author = author;
+  this.year = year;
+}
+Book.prototype.getSummary = function() {
+  return `${this.title} was written by ${this.author} in ${this.year}`;
+};
+function Magazine(title, author, year, month) {
+  Book.call(this, title, author, year);
+  this.month = month;
+}
+Magazine.prototype = Object.create(Book.prototype);
+const mag1 = new Magazine('Mag1', 'john doe', '2019', 'Jan');
+
+Magazine.prototype.constructor = Magazine;
+
+console.log(mag1);
+
+// Object Create
+const bookProtos = {
+  getSummary: function() {
+    return `${this.title} was written by ${this.author} in ${this.year}`;
+  },
+  getAge: function() {
+    const years = new Date().getFullYear() - this.year;
+    return `${this.title} is ${years} years old.`;
+  }
+};
+const bookProto1 = Object.create(bookProtos);
+bookProto1.title = 'Book One';
+bookProto1.author = 'John Doe';
+bookProto1.year = '2011';
+
+// ES6 Classes
+
+// Subclasses
 
 // Callbacks, Promises, Async/Await
 function add(x, y) {
