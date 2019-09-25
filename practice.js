@@ -378,12 +378,22 @@ const filterResult = items.filter(i => {
 console.log(filterResult);
 
 // Use reduce to sum the points:
+// arr.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue])
 const items = [
   { name: 'ball', points: 2 },
   { name: 'coin', points: 3 },
   { name: 'candy', points: 4 }
 ];
-const reduceResult = items.reduce((i, value) => {
-  return i.points + value.points;
-});
+var reduceResult = items.reduce((total, point) => {
+  // return i.points + value.points;
+  return total + point.points;
+  // console.log(value);
+}, 0);
+// the initial value of 0 is necessary when summing an array of objects
 console.log(reduceResult);
+
+const nums = [0, 1, 2, 3, 4, 5];
+var sum = nums.reduce((accumulator, currentVal) => {
+  return accumulator + currentVal;
+}, 0);
+console.log(sum);
