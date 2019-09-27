@@ -47,3 +47,53 @@ function anagram(str1, str2) {
   }
 }
 anagram('happy', 'ppyha');
+
+function anagram2(str1, str2) {
+  function createCharMap(text) {
+    let charMap = {};
+    for (let char of text) {
+      if (charMap.hasOwnProperty(char)) {
+        charMap[char]++;
+      } else {
+        charMap[char] = 1;
+      }
+    }
+    return charMap;
+  }
+
+  let stringAMap = createCharMap(str1);
+  let stringBMap = createCharMap(str2);
+  for (char in stringAMap) {
+    if (stringAMap[char] !== stringBMap[char]) {
+      return false;
+    }
+  }
+  return true;
+}
+anagram2('happy', 'paphy');
+
+function group_anagrams(arr) {
+  let sortedArr = arr.map(item =>
+    item
+      .split('')
+      .sort()
+      .join('')
+  );
+  let setArr = new Set(sortedArr);
+  let reducedObj = {};
+  for (let setItem of setArr) {
+    let indexArr = sortedArr.reduce((acc, cur, index) => {
+      if (setItem === cur) {
+        acc.push(index);
+      }
+      return acc;
+    }, []);
+    reducedObj[setItem] = indexArr;
+  }
+  let finalArr = [];
+  for (let reduceItem in reducedObj) {
+    finalArr.push(reducedObj[reduceItem].map(item => arr[item]));
+  }
+  return finalArr;
+}
+group_anagrams(['car', 'cra', 'rca', 'cheese', 'ab', 'ba']);
