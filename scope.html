@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Scopes</title>
+  </head>
+  <body></body>
+  <script>
+    if (true) {
+      // this 'if' conditional block doesn't create a scope
+
+      // name is in the global scope because of the 'var' keyword
+      var name = 'Chris';
+      // likes is in the local scope because of the 'let' keyword
+      let likes = 'Coding';
+      // skills is in the local scope because of the 'const' keyword
+      const skills = 'JavaScript and Node';
+    }
+    console.log(name); // logs 'Hammad'
+    console.log(likes); // Uncaught ReferenceError: likes is not defined
+    console.log(skills); // Uncaught ReferenceError: skills is not defined
+
+    // The Module Pattern
+    var Module = (function() {
+      function privateMethod() {
+        console.log('this is private');
+      }
+      return {
+        publicMethod: function() {
+          privateMethod();
+        }
+      };
+    })();
+    Module.publicMethod(); // works
+    Module.privateMethod(); // Uncaught ReferenceError: privateMethod is not defined
+
+    var Module = (function() {
+      function _privateMethod() {
+        // do something
+      }
+      function publicMethod() {
+        // do something
+        console.log('this is the public method');
+      }
+      return {
+        publicMethod: publicMethod
+      };
+    })();
+    Module.publicMethod();
+
+    // APPLY, CALL, and BIND - explicit binding
+    // Bind()
+    var obj = {
+      firstName: 'Chris',
+      lastName: 'Shimmin',
+      getFullName: function() {
+        var fullName = this.firstName + ' ' + this.lastName;
+        return fullName;
+      }
+    };
+    var userName = function(middleName) {
+      console.log(this.getFullName());
+      console.log(middleName);
+    };
+    var logName = userName.bind(obj);
+    logName('Glyn');
+
+    // Call() and Apply()
+    var obj = {
+      firstName: 'Chris',
+      lastName: 'Shimmin',
+      getFullName: function() {
+        var fullName = this.firstName + ' ' + this.lastName;
+        return fullName;
+      }
+    };
+    var userName = function(middleName) {
+      console.log(this.getFullName());
+      console.log(middleName);
+    };
+    userName.call(obj, 'Glyn');
+    userName.apply(obj, ['Glyn']);
+  </script>
+</html>

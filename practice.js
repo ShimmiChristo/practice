@@ -417,6 +417,35 @@ outerFunc();
 // White boarding questions
 // String manipulation, palindromes, Fibonacci, fizzbuzz
 
+// Palidrome
+// 1. Built in functions palindrome
+function pal(str) {
+  var re = /[^A-Za-z0-9]/g;
+  const strRev = str
+    .toLowerCase()
+    .replace(re, '')
+    .split('')
+    .reverse()
+    .join('');
+  console.log(strRev);
+}
+pal('ha  ppy');
+
+// 2. For Loop Palindrome
+function palFor(str) {
+  var re = /[^A-Za-z0-9]/g;
+  let strRep = str.toLowerCase().replace(re, '');
+  let len = str.length;
+  for (let i = 0; i < len / 2; i++) {
+    if (str[i] !== str[len - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
+}
+palFor('A man, a plan, a canal. Panama');
+palFor('race car');
+
 // FizzBuzz
 // Write a short program that prints each number from 1 to 100 on a new line. For each multiple of 3, print "Fizz" instead of the number. For each multiple of 5, print "Buzz" instead of the number. For numbers which are multiples of both 3 and 5, print "FizzBuzz" instead of the number.
 function fizzbuzz() {

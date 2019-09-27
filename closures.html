@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="updateClickCount()">Click Me</button>
+    The closure is a collection of all the variables in scope at the time of
+    creation of the function.
+  </body>
+  <script>
+    // function countWrapper() {
+    //   var counter = 0;
+    //   function updateClickCount() {
+    //     ++counter;
+    //   }
+    //   updateClickCount();
+    //   return counter;
+    // }
+
+    // Version 1
+    // function updateCounter() {
+    //   let counter = 0;
+    //   const add = function() {
+    //     ++counter;
+    //     return counter;
+    //   };
+    //   return add;
+    // }
+    // // const updateClickCount = updateCounter();
+
+    // Version 2
+    const updateClickCount = (function() {
+      var counter = 0;
+      return function() {
+        ++counter;
+        console.log(counter);
+      };
+    })();
+
+    // let c = 4;
+    // function addX(x) {
+    //   return function(n) {
+    //     return n + x;
+    //   };
+    // }
+    // const addThree = addX(3);
+    // let d = addThree(c);
+    // console.log('example partial application', d);
+  </script>
+</html>
