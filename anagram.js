@@ -72,6 +72,8 @@ function anagram2(str1, str2) {
 }
 anagram2('happy', 'paphy');
 
+//VERSION 3
+
 function group_anagrams(arr) {
   let sortedArr = arr.map(item =>
     item
