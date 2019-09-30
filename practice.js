@@ -109,6 +109,7 @@ function palidrome(string) {
 palidrome('carac');
 
 // Explain event delegation.
+// - Capturing, Bubbling, and Target element allow us to implement one of most powerful event handling patterns called event delegation.
 
 // Explain how 'this' works in JavaScript.
 // Can you give an example of one of the ways that working with this has changed in ES6?
@@ -263,12 +264,14 @@ function Book(title, author, year) {
 }
 const book1C = new Book('Book One', 'John doe', '2011');
 console.log(book1C.title);
+console.log(Book.prototype);
 
 // Prototypes - used if we do not want to store getSummary for each object
 Book.prototype.getSummary = function() {
   return `${this.title} was written by ${this.author} in ${this.year}`;
 };
 console.log(book1C.getSummary());
+console.log(Book.prototype);
 
 Book.prototype.getAge = function() {
   const years = new Date().getFullYear() - this.year;
@@ -293,6 +296,7 @@ function Book(title, author, year) {
 Book.prototype.getSummary = function() {
   return `${this.title} was written by ${this.author} in ${this.year}`;
 };
+console.log(Book.prototype);
 function Magazine(title, author, year, month) {
   Book.call(this, title, author, year);
   this.month = month;
@@ -526,6 +530,7 @@ const mapResult = items.map(i => {
 console.log(mapResult);
 
 // Use filter to select the items where points are greater than or equal to 3:
+// - creates a new array
 const filterResult = items.filter(i => {
   return i.points >= 3;
 });
@@ -533,6 +538,7 @@ console.log(filterResult);
 
 // Use reduce to sum the points:
 // arr.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue])
+// - results in a single output value.
 const items = [
   { name: 'ball', points: 2 },
   { name: 'coin', points: 3 },
