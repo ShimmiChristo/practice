@@ -24,22 +24,38 @@
     // Version 1
     function updateCounter() {
       let counter = 0;
-      return function() {
-        ++counter;
-        console.log(counter);
-        return counter;
-      };
-    }
-    const updateClickCount = updateCounter();
+      // function updateCounter() {
+      //   let counter = 0;
+      //   const add = function() {
+      //     ++counter;
+      //     return counter;
+      //   };
+      //   return add;
+      // }
+      // // const updateClickCount = updateCounter();
 
-    // Version 2
-    // const updateClickCount = (function() {
-    //   var counter = 0;
-    //   return function() {
-    //     ++counter;
-    //     console.log(counter);
-    //   };
-    // })();
+      // Version 2
+      const update = function() {
+        var counter = 0;
+        return function() {
+          ++counter;
+          console.log(counter);
+          return counter;
+        };
+      };
+      const updateClickCount = updateCounter();
+
+      // Version 2
+      // const updateClickCount = (function() {
+      //   var counter = 0;
+      //   return function() {
+      //     ++counter;
+      //     console.log(counter);
+      //   };
+      // })();
+    }
+
+    var updateClickCount = update();
 
     // let c = 4;
     // function addX(x) {

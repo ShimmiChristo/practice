@@ -6,3 +6,8 @@ function countWrapper() {
   updateClickCount();
   return counter;
 }
+
+var closure = function() {
+  var counter = 0;
+  return updateClickCount() {}
+}

@@ -63,6 +63,7 @@ function anagram2(str1, str2) {
 
   let stringAMap = createCharMap(str1);
   let stringBMap = createCharMap(str2);
+  console.log(stringAMap);
   for (char in stringAMap) {
     if (stringAMap[char] !== stringBMap[char]) {
       return false;
@@ -71,6 +72,8 @@ function anagram2(str1, str2) {
   return true;
 }
 anagram2('happy', 'paphy');
+
+//VERSION 3
 
 function group_anagrams(arr) {
   let sortedArr = arr.map(item =>
@@ -97,3 +100,28 @@ function group_anagrams(arr) {
   return finalArr;
 }
 group_anagrams(['car', 'cra', 'rca', 'cheese', 'ab', 'ba']);
+
+// VERSION 4
+function anagram(s1, s2) {
+  function charMap(text) {
+    var obj = {};
+    for (var i = 0; i < text.length; i++) {
+      if (obj[text[i]]) {
+        obj[text[i]]++;
+      } else {
+        obj[text[i]] = 1;
+      }
+    }
+    return obj;
+  }
+
+  var str1 = charMap(s1);
+  var str2 = charMap(s2);
+  for (var i in str1) {
+    if (str1[i] !== str2[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+anagram('hello', 'llohe');
