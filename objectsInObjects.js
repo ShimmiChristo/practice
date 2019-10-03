@@ -130,3 +130,62 @@ var res = list.reduce((total, val) => {
   return total;
 }, {});
 console.log(res);
+
+// ----
+
+var list = [
+  { id: 'a', state: 'NJ', population: 150 },
+  { id: 'a', state: 'NJ', population: 200 },
+  { id: 'b', state: 'NY', population: 500 },
+  { id: 'c', state: 'MI', population: 200 },
+  { id: 'c', state: 'MI', population: 100 }
+];
+
+// 1. create new object
+// 2. if has id, merge to correct id
+// 3. make the state[val] the key,
+// 4. add population to the total
+
+// var obj = {
+//   a: { state: 'NJ', population: 150 },
+//   a: { state: 'NJ', population: 200 },
+//   b: { state: 'NY', population: 500 },
+//   c: { state: 'MI', population: 200 },
+//   c: { state: 'MI', population: 100 }
+// };
+
+// var obj = {
+//   a: { NJ: 2, population: 350 },
+//   b: { NY: 1, population: 500 },
+//   c: { MI: 2, population: 300 }
+// };
+
+var list = [
+  { state: 'NJ', city: 'Newark', population: 150 },
+  { state: 'NJ', city: 'Trenton', population: 200 },
+  { state: 'NY', city: 'New York City', population: 500 },
+  { state: 'MI', city: 'Detroit', population: 200 },
+  { state: 'MI', city: 'Lansing', population: 100 }
+];
+
+var obj = {
+  MI: { Count: 2, city: ['Detroit', 'Lansing'], population: 300 },
+  NJ: { Count: 2, city: ['Newark', 'Trenton'], population: 350 },
+  NY: { Count: 1, city: ['New York City'], population: 500 }
+};
+
+console.log(result);
+
+function merge(list) {
+  var state = list.forEach((item, i) => {});
+  var result = {};
+  list.reduce((previousVal, currentVal, index) => {
+    var obj = item;
+    console.log(obj);
+    for (var key in obj) {
+      console.log(key);
+      result[obj.id] = Object.assign({}, obj);
+    }
+  });
+}
+merge(list);
