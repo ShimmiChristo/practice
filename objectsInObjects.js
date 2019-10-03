@@ -168,16 +168,16 @@ var list = [
   { state: 'MI', city: 'Lansing', population: 100 }
 ];
 
-var obj = {
-  MI: { Count: 2, city: ['Detroit', 'Lansing'], population: 300 },
-  NJ: { Count: 2, city: ['Newark', 'Trenton'], population: 350 },
-  NY: { Count: 1, city: ['New York City'], population: 500 }
-};
+// var obj = {
+//   MI: { Count: 2, city: ['Detroit', 'Lansing'], population: 300 },
+//   NJ: { Count: 2, city: ['Newark', 'Trenton'], population: 350 },
+//   NY: { Count: 1, city: ['New York City'], population: 500 }
+// };
 
-console.log(result);
+// console.log(result);
 
 function merge(list) {
-  var state = list.forEach((item, i) => {});
+  // var state = list.forEach((item, i) => {});
   var result = {};
   list.reduce((previousVal, currentVal, index) => {
     var obj = item;
@@ -189,3 +189,23 @@ function merge(list) {
   });
 }
 merge(list);
+
+var list = [
+  { state: 'NJ', city: 'Newark', population: 150 },
+  { state: 'NJ', city: 'Trenton', population: 200 },
+  { state: 'NY', city: 'New York City', population: 500 },
+  { state: 'MI', city: 'Detroit', population: 200 },
+  { state: 'MI', city: 'Lansing', population: 100 }
+];
+
+function mergeValues(list) {
+  var obj = {};
+
+  list.forEach(item => {
+    obj[item.state] = Object.assign({}, item);
+  });
+
+  return obj;
+}
+
+console.log(mergeValues(list));
