@@ -207,5 +207,89 @@ function mergeValues(list) {
 
   return obj;
 }
+console.log(mergeValues(list));
 
+function transform(list) {
+  return list.reduce((latestState, { state, city, population }) => {
+    const needUpdate = state in latestState;
+    latestState[state] = {
+      count: needUpdate ? latestState[state].count + 1 : 1,
+      city: needUpdate ? [...latestState[state].city, city] : [city],
+      population: needUpdate
+        ? latestState[state].population + population
+        : population
+    };
+    return latestState;
+  }, {});
+}
+// With reduce we loop over the list and every new loop we receive the latest state, in this example we start with a empty object.
+// Next, we check if entry needs a update (exists) or needs creation.
+// Based on needUpdate we set count, city and population with a short if/else.
+// If needUpdate is true, we just update otherwise we create with default values.
+
+var list = [
+  { state: 'NJ', city: 'Newark', population: 150 },
+  { state: 'NJ', city: 'Trenton', population: 200 },
+  { state: 'NY', city: 'New York City', population: 500 },
+  { state: 'MI', city: 'Detroit', population: 200 },
+  { state: 'MI', city: 'Lansing', population: 100 }
+];
+
+function mergeValues(list) {
+  var reducer = list.reduce((previousVal, { state, city, population }) => {
+    previousVal[state] = {
+      count: state in previousVal ? previousVal[state].count + 1 : 1,
+      city: state in previousVal ? [...previousVal[state].city, city] : [city],
+      population:
+        population in previousVal
+          ? previousVal[state].population + population
+          : population
+    };
+    return previousVal;
+  }, {});
+  return reducer;
+}
+console.log(mergeValues(list));
+
+var calc = () => {
+  var array1 = [1, 2, 3, 4];
+  var accumulator = array1.reduce((total, num) => {
+    var newTotal = total + num;
+    return newTotal;
+  });
+  return accumulator;
+};
+console.log(calc());
+
+var array1 = [1, 2, 3, 4];
+var accumulator = array1.reduce((total, num) => {
+  return total + num;
+});
+
+console.log(accumulator);
+
+//  Object.entries()
+// - returns an array of a give object's own enumerable string-keyed property [key, value] paris,
+// in the same order as that provided by a for...in loop.
+// The difference being that a for-in loop enumerates properties in the prototype chain as well.
+var list = [
+  { state: 'NJ', city: 'Newark', population: 150 },
+  { state: 'NJ', city: 'Trenton', population: 200 },
+  { state: 'NY', city: 'New York City', population: 500 },
+  { state: 'MI', city: 'Detroit', population: 200 },
+  { state: 'MI', city: 'Lansing', population: 100 }
+];
+
+function mergeValues(list) {
+  let obj = Object.fromEntries(
+    list.map(({ state }) => [state, { count: 0, city: [], population: 0 }])
+  );
+  console.log(obj);
+  list.forEach(({ state, city, population }) => {
+    obj[state].count++;
+    obj[state].city.push(city);
+    obj[state].population += population;
+  });
+  return obj;
+}
 console.log(mergeValues(list));
