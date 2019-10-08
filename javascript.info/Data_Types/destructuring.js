@@ -73,3 +73,21 @@ function topSalary(salaries) {
   return maxName;
 }
 topSalary(salaries);
+
+//* Can you give an example for destructuring an object or an array?
+// Array destructuring
+const foo = ['a', 'b', 'c'];
+const [one, two, three] = foo;
+console.log(one);
+// swapping variables
+let a = 1;
+let b = 3;
+[a, b] = [b, a];
+console.log(a);
+console.log(b);
+
+// Object destructuring
+const o = { p: 42, q: true };
+const { p, q } = o;
+console.log(p); // 42
+console.log(q); // true
