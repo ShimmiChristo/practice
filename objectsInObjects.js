@@ -294,8 +294,8 @@ function mergeValues(list) {
 }
 console.log(mergeValues(list));
 
-// Object.fromEntries() - transforms a list of key-value pairs into an object
-// Object.entries() - returns an array of a given object's own enumerable string-keyed property [key, value] pairs,
+//* Object.fromEntries() - transforms a list of key-value pairs into an object
+//* Object.entries() - returns an array of a given object's own enumerable string-keyed property [key, value] pairs,
 // in the same order as that provided by a for...in loop (the difference being that a for-in loop enumerates properties in the prototype chain as well).
 var list = [
   { state: 'NJ', city: 'Newark', population: 150 },
