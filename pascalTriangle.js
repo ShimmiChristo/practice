@@ -7,24 +7,3 @@
 */
 function pascal(rows) {}
 pascal(2);
-
-//? Define a function that takes an array of strings, and returns the most commonly occurring string that array (this question came with an execution time limit)
-var arr = ['happy', 'sad', 'mad', 'happy', 'fantastic', 'great', 'happy'];
-var objArr = [];
-function strings(arr) {
-  var obj = {};
-  for (var i of arr) {
-    if (obj[i]) {
-      obj[i] += 1;
-    } else {
-      obj[i] = 1;
-    }
-  }
-  objArr.push(obj);
-  var max = objArr.reduce((prev, cur) => {
-    console.log(prev);
-    // return prev.value() > cur.value();
-  });
-  return max;
-}
-console.log(strings(arr));
