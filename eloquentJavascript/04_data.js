@@ -101,10 +101,13 @@ let list = {
     }
   }
 };
+1. build a list back to front
+2. for each, add an object to the list
+3. local binding to hold the part of the list that was built so far and use an assignment like `list = { value: X, rest: list}`
 */
 /*
 Object.entries() - returns an array of a given object's own enumerable string-keyed property [key, value] pairs
-Obejct.fromEntries() - transforms a list of key-value pairs into an object 
+Object.fromEntries() - transforms a list of key-value pairs into an object 
 Object.keys()
 Object.values()
 Object.getOwnPropertyNames()
@@ -113,19 +116,11 @@ Map.keys()
 Map.values()
 */
 function arrayToList(args) {
-  // var list = {};
-  // for (var element of args) {
-  //   list['rest'] = {};
-  //   list['value'] = element;
-  // }
-  // return list;
-  var obj = {};
-  newArgs = args.map(item => {
-    restObj = {};
-    obj.value = item;
-    obj.rest = restObj;
-  });
-  return newArgs;
+  var list = null;
+  for (var i = args.length - 1; i >= 0; i--) {
+    list = { value: args[i], rest: list };
+  }
+  return list;
 }
 console.log(arrayToList([1, 2, 3]));
 
