@@ -102,13 +102,31 @@ let list = {
   }
 };
 */
+/*
+Object.entries() - returns an array of a given object's own enumerable string-keyed property [key, value] pairs
+Obejct.fromEntries() - transforms a list of key-value pairs into an object 
+Object.keys()
+Object.values()
+Object.getOwnPropertyNames()
+Map.entries()
+Map.keys()
+Map.values()
+*/
 function arrayToList(args) {
-  var list = {};
-  for (var element of args) {
-    list[]
-  }
-  return list;
+  // var list = {};
+  // for (var element of args) {
+  //   list['rest'] = {};
+  //   list['value'] = element;
+  // }
+  // return list;
+  var obj = {};
+  newArgs = args.map(item => {
+    restObj = {};
+    obj.value = item;
+    obj.rest = restObj;
+  });
+  return newArgs;
 }
-console.log(arrayToList([1]));
+console.log(arrayToList([1, 2, 3]));
 
 //? Write a function listToArray that produces and array from a list.
