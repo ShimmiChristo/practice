@@ -125,3 +125,5 @@ function arrayToList(args) {
 console.log(arrayToList([1, 2, 3]));
 
 //? Write a function listToArray that produces and array from a list.
+
+// ? Deep Comparison - https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript?rq=1
