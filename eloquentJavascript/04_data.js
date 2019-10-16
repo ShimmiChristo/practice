@@ -167,6 +167,9 @@ a recursive call to deepEqual.
 function deepEqual(val1, val2) {
   var val1Keys = Object.keys(val1);
   var val2Keys = Object.keys(val2);
+  if (val1Keys.length != val2Keys.length) {
+    return false;
+  }
   for (var i = 0; i < val1Keys.length; i++) {
     if (val1Keys[i] === val2Keys[i]) {
       if (val2Keys[i] == 'object' && val1Keys[i] != null) {
@@ -180,22 +183,6 @@ function deepEqual(val1, val2) {
       return false;
     }
   }
-  // for (var i in val1) {
-  //   // console.log(i); // here, object
-  //   // console.log(val1[i]); // {is: 'an'}, 2
-  //   // console.log(val2[i]); // {is: 'an'}, 2
-  //   // if (val1[i] == val2[i]) {
-  //   if (Object.keys(val1[i]) == Object.keys(val2[i])) {
-  //     if (typeof val1[i] == 'object' && val1[i] != null) {
-  //       //     deepEqual(val1[i], val2[i]);
-  //       //   } else {
-  //       //     return true;
-  //     }
-  //   }
-  //   // } else {
-  //   //   return false;
-  //   // }
-  // }
 }
 var obj = {
   here: {
