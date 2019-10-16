@@ -128,11 +128,51 @@ function arrayToList(args) {
 function listToArray(list) {
   var arr = [];
   for (var node = list; node; node = node.rest) {
+    arr.push(node.value);
     console.log(node);
   }
+  return arr;
 }
 console.log(listToArray(arrayToList([10, 20, 30])));
 
-function prepend(element, list) {}
+function prepend(value, rest) {
+  let list = {
+    value: value,
+    rest: rest
+  };
+  return list;
+}
+console.log(prepend(10, prepend(20, null))); // {value: 10, rest: {value: 20, rest: null}}
+
+function nth(list, num) {
+  let answer;
+  if (num === 0) {
+    return list.value;
+  } else {
+    return nth(list.rest, num - 1);
+  }
+}
+console.log(nth(arrayToList([10, 20, 30]), 1)); // 20
 
 // ? Deep Comparison - https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript?rq=1
+/*
+Wite a function deepEqual that takes two values and returns true only if they are the same value or 
+are object with the same properties,  where the values of the properties are equal when compatd with
+a recursive call to deepEqual. 
+
+- Object.keys will be useful when you need to go over the properties of objects to compare them
+*/
+function deepEqual(val1, val2) {
+  for (var iterate in val1) {
+    if (val1[iterate] != val2[iterate]) {
+      console.log(val1[iterate]);
+      console.log(val2[iterate]);
+      return false;
+    }
+    return true;
+  }
+}
+let obj = { here: { is: 'an' }, object: 2 };
+console.log(deepEqual(obj, obj)); // true
+console.log(deepEqual(obj, { here: 1, object: 2 })); // false
+console.log(deepEqual(obj, { here: { is: 'an' }, object: 2 })); //true
