@@ -125,7 +125,14 @@ function arrayToList(args) {
 console.log(arrayToList([1, 2, 3]));
 
 //? Write a function listToArray that produces and array from a list.
-function listToArray(list) {}
+function listToArray(list) {
+  var arr = [];
+  for (let node = list; node; node = node.rest) {
+    arr.push(node.value);
+  }
+  return arr;
+}
+console.log(listToArray(arrayToList([10, 20, 30])));
 
 function prepend(element, list) {}
 
