@@ -161,7 +161,16 @@ are object with the same properties,  where the values of the properties are equ
 a recursive call to deepEqual. 
 
 - Object.keys will be useful when you need to go over the properties of objects to compare them
-- hasOwnProperty()
+- hasOwnProperty() - returns a boolean whether the object has the specified property as its own property (as opposed to inheriting it)
+- Object.assign() - performs a shallow copy on an object, not a deep clone
+- object spread operator performs a shallow clone
+
+1. compare each key
+2. if the keys match
+3. check if a property
+4. if an object, repeat
+5. if not an object, compare value
+6. if the same value, return true
 */
 function deepEqual(val1, val2) {
   var val1Array = Object.keys(val1);
@@ -169,6 +178,7 @@ function deepEqual(val1, val2) {
   for (var i of val1Array) {
     if (val1Array[i] == val2Array[i]) {
       console.log(Object.values(val1Array[i]));
+      return true;
     }
   }
   // for (var iterate in val1) {
@@ -183,4 +193,24 @@ function deepEqual(val1, val2) {
 let obj = { here: { is: 'an' }, object: 2 };
 console.log(deepEqual(obj, { here: { is: 'an' }, object: 2 })); //true
 console.log(deepEqual(obj, obj)); // true
+console.log(deepEqual(obj, { here: 1, object: 2 })); // false
+
+function deepEqual(a, b) {
+  var aKeys = Object.keys(a);
+  var bKeys = Object.keys(b);
+  function compareArrays(arr1, arr2) {
+    if (arr1.every((value, index) => value === arr2[index])) return true;
+  }
+  if (compareArrays(aKeys, bKeys) === true) {
+    console.log('the arrays are the same');
+  }
+}
+let obj = {
+  here: {
+    is: 'an'
+  },
+  object: 2
+};
+console.log(deepEqual(obj, obj)); // true
+console.log(deepEqual(obj, { here: { is: 'an' }, object: 2 })); //true
 console.log(deepEqual(obj, { here: 1, object: 2 })); // false
