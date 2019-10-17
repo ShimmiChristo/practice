@@ -201,8 +201,18 @@ function deepEqual(a, b) {
   function compareArrays(arr1, arr2) {
     if (arr1.every((value, index) => value === arr2[index])) return true;
   }
-  if (compareArrays(aKeys, bKeys) === true) {
-    console.log('the arrays are the same');
+  if (a === b) {
+    console.log('a and b are === equal');
+    console.log(a + ' ' + b);
+    return true;
+  } else {
+    if (compareArrays(aKeys, bKeys) === true) {
+      if (typeof a[aKeys[0]] === 'object' && typeof b[bKeys[0]] === 'object') {
+        return deepEqual(aKeys[0], bKeys[0]);
+      } else {
+        return false;
+      }
+    }
   }
 }
 let obj = {
@@ -211,6 +221,6 @@ let obj = {
   },
   object: 2
 };
-console.log(deepEqual(obj, obj)); // true
 console.log(deepEqual(obj, { here: { is: 'an' }, object: 2 })); //true
+console.log(deepEqual(obj, obj)); // true
 console.log(deepEqual(obj, { here: 1, object: 2 })); // false
