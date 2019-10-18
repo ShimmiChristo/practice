@@ -196,8 +196,11 @@ console.log(deepEqual(obj, obj)); // true
 console.log(deepEqual(obj, { here: 1, object: 2 })); // false
 
 function deepEqual(a, b) {
-  var aKeys = Object.keys(a);
-  var bKeys = Object.keys(b);
+  const aKeys = Object.keys(a);
+  const bKeys = Object.keys(b);
+  // console.log(aKeys);
+  // console.log(bKeys);
+  var level = 0;
   function compareArrays(arr1, arr2) {
     if (arr1.every((value, index) => value === arr2[index])) return true;
   }
@@ -208,9 +211,18 @@ function deepEqual(a, b) {
   } else {
     if (compareArrays(aKeys, bKeys) === true) {
       if (typeof a[aKeys[0]] === 'object' && typeof b[bKeys[0]] === 'object') {
-        return deepEqual(aKeys[0], bKeys[0]);
-      } else {
-        return false;
+        // console.log(a[aKeys[0]]);
+        // console.log(b[bKeys[0]]);
+        deepEqual(a[aKeys[0]], b[bKeys[0]]);
+      } else if (
+        a[aKeys[0]] !== null &&
+        b[bKeys[0]] !== null &&
+        a[aKeys[0]] === b[bKeys[0]]
+      ) {
+        level++;
+        console.log('a EQUALS b');
+        console.log(a);
+        // deepEqual(a[aKeys[level]], b[bKeys[level]]);
       }
     }
   }
