@@ -166,65 +166,38 @@ a recursive call to deepEqual.
 - object spread operator performs a shallow clone
 
 1. compare each key
-2. if the keys match
-3. check if a property
+2. if the keys match (same length)
+3. check if a property (by running for/in)
 4. if an object, repeat
 5. if not an object, compare value
 6. if the same value, return true
 */
-function deepEqual(val1, val2) {
-  var val1Array = Object.keys(val1);
-  var val2Array = Object.keys(val2);
-  for (var i of val1Array) {
-    if (val1Array[i] == val2Array[i]) {
-      console.log(Object.values(val1Array[i]));
-      return true;
-    }
-  }
-  // for (var iterate in val1) {
-  //   if (val1[iterate] != val2[iterate]) {
-  //     console.log(val1[iterate]);
-  //     console.log(val2[iterate]);
-  //     return false;
-  //   }
-  //   return true;
-  // }
-}
-let obj = { here: { is: 'an' }, object: 2 };
-console.log(deepEqual(obj, { here: { is: 'an' }, object: 2 })); //true
-console.log(deepEqual(obj, obj)); // true
-console.log(deepEqual(obj, { here: 1, object: 2 })); // false
 
 function deepEqual(a, b) {
-  const aKeys = Object.keys(a);
-  const bKeys = Object.keys(b);
-  // console.log(aKeys);
-  // console.log(bKeys);
-  var level = 0;
-  function compareArrays(arr1, arr2) {
-    if (arr1.every((value, index) => value === arr2[index])) return true;
-  }
   if (a === b) {
-    console.log('a and b are === equal');
-    console.log(a + ' ' + b);
     return true;
-  } else {
-    if (compareArrays(aKeys, bKeys) === true) {
-      if (typeof a[aKeys[0]] === 'object' && typeof b[bKeys[0]] === 'object') {
-        // console.log(a[aKeys[0]]);
-        // console.log(b[bKeys[0]]);
-        deepEqual(a[aKeys[0]], b[bKeys[0]]);
-      } else if (
-        a[aKeys[0]] !== null &&
-        b[bKeys[0]] !== null &&
-        a[aKeys[0]] === b[bKeys[0]]
-      ) {
-        level++;
-        console.log('a EQUALS b');
-        console.log(a);
-        // deepEqual(a[aKeys[level]], b[bKeys[level]]);
+  } else if (
+    a !== null &&
+    typeof a === 'object' &&
+    b !== null &&
+    typeof b === 'object'
+  ) {
+    if (Object.keys(a).length !== Object.keys(b).length) {
+      return false;
+    }
+
+    for (var prop in a) {
+      if (b.hasOwnProperty(prop)) {
+        if (!deepEqual(a[prop], b[prop])) {
+          return false;
+        }
+      } else {
+        return false;
       }
     }
+    return true;
+  } else {
+    return false;
   }
 }
 let obj = {
@@ -236,3 +209,29 @@ let obj = {
 console.log(deepEqual(obj, { here: { is: 'an' }, object: 2 })); //true
 console.log(deepEqual(obj, obj)); // true
 console.log(deepEqual(obj, { here: 1, object: 2 })); // false
+
+//! Version 2
+function deepEqual(obj1, obj2) {
+  if (obj1 === obj2)
+    // it's just the same object. No need to compare.
+    return true;
+
+  if (isPrimitive(obj1) && isPrimitive(obj2))
+    // compare primitives
+    return obj1 === obj2;
+
+  if (Object.keys(obj1).length !== Object.keys(obj2).length) return false;
+
+  // compare objects with same number of keys
+  for (let key in obj1) {
+    if (!(key in obj2)) return false; //other object doesn't have this prop
+    if (!deepEqual(obj1[key], obj2[key])) return false;
+  }
+
+  return true;
+}
+
+//check if value is primitive
+function isPrimitive(obj) {
+  return obj !== Object(obj);
+}
