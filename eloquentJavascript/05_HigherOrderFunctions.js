@@ -31,24 +31,18 @@ Finally, it calls the update function to create a new value and starts from the 
 When defining the function, you can use a regular loop to do the actual looping.
 */
 
-function testFn(test) {
-  console.log(test(val));
-  return test(val) ? bodyFunction(val) : false;
-}
-
-function bodyFunction(num) {
-  return num;
+function loop(value, test, body, update) {
+  for (let i = value; test(i); i = body(i)) {
+    update(i);
+  }
 }
 
 function loop(value, test, body, update) {
   for (var i = 0; i < value; i++) {
     if (test(value)) {
-      return update(body(value));
-    } else {
-      return false;
+      update(value);
+      return loop(body(value), test, body, update);
     }
-
-    // update(test(body(value)));
   }
   return false;
 }
