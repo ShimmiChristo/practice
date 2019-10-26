@@ -42,15 +42,19 @@ function bodyFunction(num) {
 
 function loop(value, test, body, update) {
   for (var i = 0; i < value; i++) {
+    // if (test(value)) update();
+    // test(value) == true ? update(body(value)) : false;
     if (test(value)) {
-      return update(body(value));
+      update(value);
+      return body(value);
     } else {
       return false;
     }
+    // return update(body(value));
 
     // update(test(body(value)));
   }
-  return false;
+  // return false;
 }
 
 loop(3, n => n > 0, n => n - 1, console.log);
