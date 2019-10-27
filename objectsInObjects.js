@@ -279,24 +279,46 @@ var list = [
   { state: 'MI', city: 'Detroit', population: 200 },
   { state: 'MI', city: 'Lansing', population: 100 }
 ];
+//nj : {}
 
 // The in operator returns true if the specified property is in the specified object or its prototype chain.
 function mergeValues(list) {
-  return list.reduce((acc, { state, city, population }) => {
-    console.log(acc);
-    console.log(state, city, population);
-    // if (!(state in acc)) {
-    //   acc[state] = { count: 1, city: [city], population: population };
-    // } else {
-    //   acc[state] = {
-    //     count: acc[state].count++,
-    //     city: [...acc[state].city, city],
-    //     population: acc[population] + population
-    //   };
-    // }
-    // return acc;
-  }, {});
+  let obj = {};
+  for (var elem of list) {
+    if (!obj[elem.state]) {
+      obj[elem.state] = {
+        count: 1,
+        city: [elem.city],
+        population: elem.population
+      };
+    } else {
+      obj[elem.state] = {
+        count: obj[elem.state].count + 1,
+        city: [...obj[elem.state].city, elem.city],
+        population: obj[elem.state].population + elem.population
+      };
+    }
+  }
+  return obj;
 }
+console.log(mergeValues(list));
+
+// return list.reduce((acc, { state, city, population }) => {
+//   for (var i in acc) {
+//     console.log(i);
+//     if (i != state) {
+//       state = {
+//         count: 1,
+//         city: city,
+//         population: population
+//       };
+//     } else {
+//       i[count] += 1;
+//       (i[city] = [...city, city]), (i[population] += population);
+//     }
+//   }
+//   }, obj);
+// }
 console.log(mergeValues(list));
 // var obj = {
 //   NJ: { count: 2, city: ['Newark, Trenton'], population: 350 }
