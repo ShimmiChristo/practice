@@ -46,7 +46,27 @@ Give the class a static from method that takes an iterable object as argument an
 */
 
 class Group {
-  // Your code here.
+  constructor(group) {
+    this.group = group;
+  }
+  add(item) {
+    if (this.has(item) === false) {
+      this.group.push(item);
+    }
+  }
+  delete(item) {
+    if (this.has(item) === true) {
+      let pos = this.group.indexOf(item);
+      this.group.splice(pos, 1);
+      return this.group;
+    }
+  }
+  has(item) {
+    return this.group.indexOf(item) !== -1;
+  }
+  static from(group) {
+    return new Group(group);
+  }
 }
 
 let group = Group.from([10, 20]);
