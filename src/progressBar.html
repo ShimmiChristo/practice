@@ -29,20 +29,31 @@
       }
     </style>
     <script>
+      // function fillBar(seconds) {
+      //   const progress = document.querySelector('.bar');
+      //   let width = 0;
+      //   const interval = setInterval(() => {
+      //     console.log(width);
+      //     progress.style.width = width + '%';
+      //     width++;
+      //     if (width >= 100) {
+      //       clearInterval(interval);
+      //     }
+      //   }, (seconds * 1000) / 100);
+
+      //   // progress.style.width = '100%';
+      //   // progress.style.transition = `${seconds}s linear width`;
+      // }
       function fillBar(seconds) {
         const progress = document.querySelector('.bar');
         let width = 0;
         const interval = setInterval(() => {
-          console.log(width);
           progress.style.width = width + '%';
           width++;
           if (width >= 100) {
             clearInterval(interval);
           }
         }, (seconds * 1000) / 100);
-
-        // progress.style.width = '100%';
-        // progress.style.transition = `${seconds}s linear width`;
       }
     </script>
   </body>
