@@ -78,3 +78,43 @@ group.add(10);
 group.delete(10);
 console.log(group.has(10));
 // → false
+
+//! Iterable Groups
+/* 
+Make the Group class from the previous exercise iterable. Refer to the section about the iterator interface earlier in the chapter if you aren’t clear on the exact form of the interface anymore.
+
+If you used an array to represent the group’s members, don’t just return the iterator created by calling the Symbol.iterator method on the array. That would work, but it defeats the purpose of this exercise.
+
+It is okay if your iterator behaves strangely when the group is modified during iteration.
+*/
+
+class Group {
+  constructor(group) {
+    this.group = group;
+  }
+  add(item) {
+    if (this.has(item) === false) {
+      this.group.push(item);
+    }
+  }
+  delete(item) {
+    if (this.has(item) === true) {
+      let pos = this.group.indexOf(item);
+      this.group.splice(pos, 1);
+      return this.group;
+    }
+  }
+  has(item) {
+    return this.group.indexOf(item) !== -1;
+  }
+  static from(group) {
+    return new Group(group);
+  }
+}
+
+for (let value of Group.from(['a', 'b', 'c'])) {
+  console.log(value);
+}
+// → a
+// → b
+// → c
