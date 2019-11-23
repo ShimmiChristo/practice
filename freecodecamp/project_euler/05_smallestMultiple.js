@@ -8,6 +8,7 @@ What is the smallest positive number that is evenly divisible by all of the numb
   - add to total 
   - the number will always be divisible by (n * n -1)
   - need to check if each increment modulus equals zero 
+  - divide by each number, return true, else add 1
 */
 function smallestMult(n) {
   var total = n * (n - 1);
