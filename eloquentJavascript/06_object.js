@@ -79,7 +79,7 @@ group.delete(10);
 console.log(group.has(10));
 // → false
 
-//! Iterable Groups
+//! Iterable Groups ???? -
 /* 
 Make the Group class from the previous exercise iterable. Refer to the section about the iterator interface earlier in the chapter if you aren’t clear on the exact form of the interface anymore.
 
@@ -108,7 +108,15 @@ class Group {
     return this.group.indexOf(item) !== -1;
   }
   static from(group) {
+    // console.log(group);
     return new Group(group);
+  }
+  [Symbol.iterator]() {}
+}
+
+class GroupIterator {
+  constructor(group) {
+    this.group = group;
   }
 }
 

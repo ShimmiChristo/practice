@@ -89,7 +89,7 @@ function sumTo(n) {
 }
 console.log(sumTo(10000)); // 5050
 
-//! 2. Calfulate factorial
+//! 2. Calculate factorial
 /* The factorial of a natural number is a number multiplied by "number minus one", then by "number minus two", and so on till 1. The factorial of n is denoted as n!
 
 We can write a definition of factorial like this:
@@ -105,9 +105,11 @@ The task is to write a function factorial(n) that calculates n! using recursive 
 
 P.S. Hint: n! can be written as n * (n-1)! For instance: 3! = 3*2! = 3*2*1! = 6 */
 
-function factorial(n) {}
-
-// console.log(factorial(5)); // 120
+function factorial(n) {
+  if (n != 1) return n * factorial(n - 1);
+  else return 1;
+}
+console.log(factorial(5)); // 120
 
 //! 3. Fibonacci numbers
 /* The sequence of Fibonacci numbers has the formula Fn = Fn-1 + Fn-2. In other words, the next number is a sum of the two preceding ones.
@@ -125,6 +127,27 @@ function fib(n) {
 console.log(fib(7)); // 2
 // console.log(fib(7)); // 13
 // console.log(fib(77)); // 5527939700884757
+
+//! 4. Output a single-linked list
+/* 
+  Let’s say we have a single-linked list (as described in the chapter Recursion and stack):
+ */
+let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
+printList(list) {
+  
+}
 
 // ! Create a list tree
 let categories = [
