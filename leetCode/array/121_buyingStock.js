@@ -22,7 +22,16 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
  * @param {number[]} prices
  * @return {number}
  */
-var maxProfit = function(prices) {
-    
+const maxProfit = function(prices) {
+  // let max = prices.indexOf(Math.max(...prices));
+  // let min = prices.indexOf(Math.min(...prices));
+  let min = 0;
+  for (var i = 0; i < prices.length; i++) {
+    if (prices[i] < prices[i + 1]) {
+      return (min = prices[i]);
+    }
+  }
 };
-
+let arr = [7, 1, 5, 3, 6, 4];
+let findTotal = maxProfit(arr);
+console.log(findTotal);
