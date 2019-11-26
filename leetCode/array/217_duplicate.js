@@ -19,12 +19,34 @@ Output: true
  * @return {boolean}
  */
 var containsDuplicate = function(nums) {
-  const obj = {};
-  for (let i = 0; i < nums.length; i++) {
-    if (!obj[nums[i]]) obj[nums[i]] = 1;
-    else return true;
+  //*1 creating an object
+  // const obj = {};
+  // for (let i = 0; i < nums.length; i++) {
+  //   if (!obj[nums[i]]) obj[nums[i]] = 1;
+  //   else return true;
+  // }
+  // return false;
+  //* 2. O(n2) time complexity (the worst you can have)
+  // for (var i = 0; i < nums.length; i++) {
+  //   for (var j = i; j < nums.length; j++) {
+  //     if (i != j && nums[i] == nums[j]) {
+  //       return true;
+  //     }
+  //   }
+  // }
+  // return false;
+
+  //* 3. associative array or HashMap - O(n) time complexity
+  let counts = [];
+  for (var i = 0; i < nums.length; i++) {
+    if (counts[nums[i]] == undefined) {
+      counts[nums[i]] = 1;
+      console.log(counts[nums[i]]);
+    } else {
+      return true;
+    }
   }
   return false;
 };
-var arr = [1, 2, 3];
+var arr = [1, 2, 3, 2, 2];
 containsDuplicate(arr);
