@@ -87,7 +87,7 @@ function sumTo(n) {
   // *3
   // return (n * (n + 1)) / 2;
 }
-console.log(sumTo(10000)); // 5050
+// console.log(sumTo(10000)); // 5050
 
 //! 2. Calculate factorial
 /* The factorial of a natural number is a number multiplied by "number minus one", then by "number minus two", and so on till 1. The factorial of n is denoted as n!
@@ -109,7 +109,7 @@ function factorial(n) {
   if (n != 1) return n * factorial(n - 1);
   else return 1;
 }
-console.log(factorial(5)); // 120
+// console.log(factorial(5)); // 120
 
 //! 3. Fibonacci numbers
 /* The sequence of Fibonacci numbers has the formula Fn = Fn-1 + Fn-2. In other words, the next number is a sum of the two preceding ones.
@@ -124,13 +124,17 @@ function fib(n) {
   if (n < 2) return n;
   return fib(n - 1) + fib(n - 2);
 }
-console.log(fib(7)); // 2
+// console.log(fib(7)); // 2
 // console.log(fib(7)); // 13
 // console.log(fib(77)); // 5527939700884757
 
 //! 4. Output a single-linked list
 /* 
   Let’s say we have a single-linked list (as described in the chapter Recursion and stack):
+
+Write a function printList(list) that outputs list items one-by-one.
+Make two variants of the solution: using a loop and using recursion.
+What’s better: with recursion or without it?
  */
 let list = {
   value: 1,
@@ -145,9 +149,36 @@ let list = {
     }
   }
 };
-printList(list) {
-  
+function printList(list) {
+  //* 1. using recursion
+  // console.log(list.value);
+  // if (list.next !== null) printList(list.next);
+  //* 2. using a loop
+  let temp = list;
+  while (temp) {
+    console.log(temp.value);
+    temp = temp.next;
+  }
 }
+// console.log(printList(list));
+
+//! 5. Output a single-linked list in the revserse order
+function reverseList(list) {
+  //* 1. using recursion
+  // if (list.next !== null) reverseList(list.next);
+  // console.log(list.value);
+  //* 2. using a loop
+  let arr = [];
+  let temp = list;
+  while (temp) {
+    arr.push(temp.value);
+    temp = temp.next;
+  }
+  for (let i = arr.length - 1; i >= 0; i--) {
+    console.log(arr[i]);
+  }
+}
+console.log(reverseList(list));
 
 // ! Create a list tree
 let categories = [
