@@ -25,13 +25,31 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 const maxProfit = function(prices) {
   // let max = prices.indexOf(Math.max(...prices));
   // let min = prices.indexOf(Math.min(...prices));
-  let min = 0;
+  let buy = prices[0];
+  let sell;
+  let maxProfit = 0;
   for (var i = 0; i < prices.length; i++) {
-    if (prices[i] < prices[i + 1]) {
-      return (min = prices[i]);
+    for (var j = i + 1; j < prices.length; j++) {
+      let profit = prices[j] - prices[i];
+      if (prices[j] > prices[i]) {
+        maxProfit = profit;
+      }
     }
   }
+  return maxProfit;
 };
-let arr = [7, 1, 5, 3, 6, 4];
+let arr = [7, 1, 5, 3, 6, 4]; // 5
+// let arr = [7, 6, 4, 3, 1]; // 0
 let findTotal = maxProfit(arr);
 console.log(findTotal);
+
+// ---
+var maxProfit = function(prices) {
+  var min = Number.MAX_SAFE_INTEGER;
+  var max = 0;
+  for (var i = 0; i < prices.length; i++) {
+    min = Math.min(min, prices[i]);
+    max = Math.max(max, prices[i] - min);
+  }
+  return max;
+};

@@ -20,10 +20,10 @@ boundFunction(); // woof
 function talk(sound) {
   console.log(this.sound);
 }
-let dog = {
+let dog2 = {
   sound: 'woof'
 };
-let dogSound = talk.bind(dog);
+let dogSound = talk.bind(dog2);
 dogSound();
 
 let talk = function() {
@@ -35,3 +35,27 @@ let dogSound = {
   sound: 'woof'
 };
 dogSound.speak();
+
+//! new keyword
+function Person(saying) {
+  this.saying = saying;
+}
+Person.prototype.talk = function() {
+  console.log('the dog says', this.saying);
+};
+function newer(constructor) {
+  var obj = {};
+  Object.setPrototypeOf(obj, constructor.prototype);
+  var argsArray = Array.prototype.slice.apply(arguments);
+  return constructor.apply(obj, argsArray.slice(1)) || obj;
+}
+
+let woofy = newer(Person, 'woof');
+woofy.talk();
+
+// ----
+function Dog() {}
+Dog.prototype.breed = 'Bulldog';
+new Dog();
+let myDog = new Dog();
+myDog.breed;
