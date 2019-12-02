@@ -44,6 +44,14 @@ function Food(name, price) {
 var cheese = new Food('Cheese', 5);
 console.log(cheese.name);
 
+// -------
+
+let divs = document.querySelectorAll('div');
+divs.instanceof Array // false - a nodeList is returned
+// use .call() to turn the node list into a real array
+let divs = Array.prototype.slice.call(document.querySelectorAll('div'));
+
+
 //! Apply
 /*
   - apply method solves the above limitation by accepting the args in the form of array. 

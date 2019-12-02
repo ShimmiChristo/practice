@@ -222,7 +222,8 @@ function transform(list) {
     return latestState;
   }, {});
 }
-// With reduce we loop over the list and every new loop we receive the latest state, in this example we start with a empty object.
+// With reduce we loop over the list and every new loop we receive the latest state, 
+// in this example we start with a empty object.
 // Next, we check if entry needs a update (exists) or needs creation.
 // Based on needUpdate we set count, city and population with a short if/else.
 // If needUpdate is true, we just update otherwise we create with default values.
